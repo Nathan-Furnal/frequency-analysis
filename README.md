@@ -32,4 +32,16 @@ keyword. For example, a guess of 8 will try to find a best keyword from the
 length 1 to 7. Once a key is found, the `freq` command outputs the result to the
 standard output.
 
+There is a text file in the `data/` folder, so this is a possible workflow: 
+
+```sh
+# Encryption
+python src/main.py encrypt -f data/la-sagesse-et-la-destinee-extract.txt 
+-k porte -o data/out-key-porte.txt 
+# Decryption
+python src/main.py encrypt -f data/out-key-porte.txt -k porte -o data/out-key-porte-deciphered.txt
+# Frequency analysis
+python src/main.py -f data/out-key-porte.txt -g 10
+```
+
 
