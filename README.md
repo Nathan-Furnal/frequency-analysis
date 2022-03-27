@@ -1,7 +1,8 @@
 # Usage
 
-To use this, you'll need a recent Python install, preferably `3.10`, as of this
-writing.
+To use this, you'll need a recent Python install, at least `>= 3.8` because of
+the use of the `:=` operator in `frequential_analysis.py`. It can be easily
+removed but the use of f-strings require at least python `>= 3.6`. 
 
 You will also need to install `unidecode`, this can be done with: 
 
