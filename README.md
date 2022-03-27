@@ -1,5 +1,5 @@
 # Introduction
 
-Use python [encrypt|decrypt|freq] [--file] [--key] [--guess]
+Use python src/main.py [encrypt|decrypt|freq] [--file] [--key] [--guess]
 
 # Requirements
