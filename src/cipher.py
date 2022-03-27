@@ -6,6 +6,7 @@ from pathlib import Path
 
 class Cipherer:
     L_DICT = {l: i for i, l in enumerate(string.ascii_lowercase)}
+    LETTERS = string.ascii_lowercase
     N_LETTERS = 26
 
     def __init__(self, path_to_file: Path, is_file_encrypted: bool):
@@ -47,7 +48,7 @@ class Cipherer:
             enc_idx = (
                 self.L_DICT[letter] + self.L_DICT[key[idx % len(key)]]
             ) % self.N_LETTERS
-            self._encrypted += string.ascii_lowercase[enc_idx]
+            self._encrypted += self.LETTERS[enc_idx]
 
     def decrypt(self, key: str):
         key = to_alpha(key)
@@ -55,7 +56,7 @@ class Cipherer:
             dec_idx = (
                 self.L_DICT[letter] - self.L_DICT[key[idx % len(key)]]
             ) % self.N_LETTERS
-            self._plain_text += string.ascii_lowercase[dec_idx]
+            self._plain_text += self.LETTERS[dec_idx]
 
     def to_file(self, out_path: Path, encrypted: bool) -> None:
         if encrypted:
