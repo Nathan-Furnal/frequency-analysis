@@ -1,3 +1,7 @@
+# Introduction
+
+Frequency analysis project, Nathan FURNAL 55803. 
+
 # Usage
 
 To use this, you'll need a recent Python install, at least `>= 3.8` because of
