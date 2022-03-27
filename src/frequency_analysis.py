@@ -35,13 +35,11 @@ LETTER_FREQ_FR = {
 
 class FrequencyAnalyzer:
     # See https://en.wikipedia.org/wiki/Index_of_coincidence
-    FRENCH_IC = 0.0746
-    ENGLISH_IC = 0.0667
-    RND_IC = 0.0385
 
     def __init__(self, path_to_file: Path):
         self._cipherer = Cipherer(path_to_file, True)
         self._best_split = 0
+        self._keyword = ''
 
     @property
     def cipherer(self):
@@ -50,6 +48,10 @@ class FrequencyAnalyzer:
     @property
     def best_split(self):
         return self._best_split
+
+    @property
+    def keyword(self):
+        return self._keyword
 
     def compute_ic(self, txt: str):
         counts = Counter(txt)
@@ -114,4 +116,5 @@ class FrequencyAnalyzer:
                     smallest_idx = j
             keyword += Cipherer.LETTERS[smallest_idx]
 
+        self._keyword = keyword
         return keyword
