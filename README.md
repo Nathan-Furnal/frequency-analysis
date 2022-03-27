@@ -3,7 +3,11 @@
 To use this, you'll need a recent Python install, preferably `3.10`, as of this
 writing.
 
-You will also need to install `unidecode`, the requie
+You will also need to install `unidecode`, this can be done with: 
+
+```sh
+pip3 install -r requirements.txt
+```
 
 There are 3 main commands, to be launched from the root directory
 (`frequential-analysis`). 
@@ -25,8 +29,6 @@ The `encrypt` command takes an input file, a key and an output file. The
 `freq` command takes an input file and a guess for the length of the
 keyword. For example, a guess of 8 will try to find a best keyword from the
 length 1 to 7. Once a key is found, the `freq` command outputs the result to the
-standard output. 
-
-
+standard output.
 
 
