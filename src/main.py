@@ -1,3 +1,6 @@
+"""Main application and command line reader. Provides a way to encrypt, decrypt
+and analyze a text file."""
+
 from pathlib import Path
 from frequency_analysis import FrequencyAnalyzer
 from cipher import Cipherer
@@ -50,6 +53,16 @@ sub_freq.add_argument(
     help="Range of values to try for the length of the keyword. A value of 5 will attempt to find the length from 1 to 4.",
 )
 
+sub_freq.add_argument(
+    "-l",
+    "--language",
+    type=str,
+    choices=["fr", "en"],
+    default="fr",
+    required=True,
+    help="the language to use for analysis, this parameter influences the letter frequencies which are used.",
+)
+
 
 def main():
     args = parser.parse_args()
@@ -64,7 +77,7 @@ def main():
     elif args.cmd == "freq":
         freq_analyzer = FrequencyAnalyzer(Path(args.file))
         freq_analyzer.guess_length_kw(args.guess)
-        freq_analyzer.guess_kw()
+        freq_analyzer.guess_kw(lang=args.language)
         print(f"The guessed key is: {freq_analyzer.keyword}")
     else:
         print("Use one of [encrypt|decrypt|freq]")

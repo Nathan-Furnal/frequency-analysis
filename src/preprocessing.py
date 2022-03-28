@@ -1,3 +1,5 @@
+"""Preprocessing function for text data."""
+
 from unidecode import unidecode
 import re
 
