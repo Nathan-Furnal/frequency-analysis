@@ -1,6 +1,25 @@
 # Introduction
 
-Frequency analysis project, Nathan FURNAL 55803.
+Frequency analysis project. This project implements a [Vigenère
+cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher) with the possibility
+of ciphering and deciphering text files. 
+
+A frequency analysis attack is also implemented, based on a guess of keyword
+length. In short, it breaks down ciphered text into chunks based on the keyword
+length. The length providing the highest [index of
+coincidence](https://en.wikipedia.org/wiki/Index_of_coincidence) becomes the
+candidate length to find the keyword. Then, each letter of the alphabet is
+compared against a ciphered chunk of text with a measure of proximity using
+letters' frequencies. This step can be seen as a repeatedly trying to find the
+answer to a Caesar cipher, for each chunk. Then, all the best letter guesses are
+concatenated to give the keyword.
+
+Note that this method is not foolproof for two reasons: it's weak against short
+texts which tend to deviate from expected letter frequencies and long keywords
+make the checking process prohibitive as well.
+
+N.B: A Vigenère cipher with one letter is a [Caesar
+cipher](https://en.wikipedia.org/wiki/Caesar_cipher). 
 
 # Usage
 
