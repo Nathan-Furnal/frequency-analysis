@@ -31,10 +31,11 @@ python src/main.py {encrypt, decrypt, freq} -h
 
 The `encrypt` command takes an input file, a key and an output file. The
 `decrypt` command takes an input file, a key and an output file as well. The
-`freq` command takes an input file and a guess for the length of the
-keyword. For example, a guess of 8 will try to find a best keyword from the
-length 1 to 7. Once a key is found, the `freq` command outputs the result to the
-standard output.
+`freq` command takes an input file and a guess for the length of the keyword. It
+also takes a language argument, both French and English are supported. For
+example, a guess of 8 will try to find a best keyword from the length 1
+to 7. Once a key is found, the `freq` command outputs the result to the standard
+output.
 
 There is a text file in the `data/` folder, so this is a possible workflow:
 
@@ -45,5 +46,5 @@ python src/main.py encrypt -f data/la-sagesse-et-la-destinee-extract.txt
 # Decryption
 python src/main.py encrypt -f data/out-key-porte.txt -k porte -o data/out-key-porte-deciphered.txt
 # Frequency analysis
-python src/main.py -f data/out-key-porte.txt -g 10
+python src/main.py freq -f data/out-key-porte.txt -g 10 -l fr # language is French
 ```
