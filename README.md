@@ -2,7 +2,7 @@
 
 Frequency analysis project. This project implements a [Vigenère
 cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher) with the possibility
-of ciphering and deciphering text files. 
+of ciphering and deciphering text files.
 
 A frequency analysis attack is also implemented, based on a guess of keyword
 length. In short, it breaks down ciphered text into chunks based on the keyword
@@ -19,7 +19,9 @@ texts which tend to deviate from expected letter frequencies and long keywords
 make the checking process prohibitive as well.
 
 N.B: A Vigenère cipher with one letter is a [Caesar
-cipher](https://en.wikipedia.org/wiki/Caesar_cipher). 
+cipher](https://en.wikipedia.org/wiki/Caesar_cipher).
+
+See [the high-level overview](#High-level-overview) for a quick rundown.
 
 # Usage
 
@@ -67,3 +69,47 @@ python src/main.py encrypt -f data/out-key-porte.txt -k porte -o data/out-key-po
 # Frequency analysis
 python src/main.py freq -f data/out-key-porte.txt -g 10 -l fr # language is French
 ```
+
+# High-level overview
+
+The goal of this project is to provide a way to cipher plain text files based on
+a key and then automatically find the key back to decipher the text.
+
+Some trade-offs were made for simplicity: only the basic 26 letters alphabet was
+allowed and any spaces or punctuation was removed as well. In that sense, it's a
+good introduction to implement ciphering but not a real-world tool!
+
+More information about what a cipher is and how they're implemented can be found
+in the documentation of the code. Let's get started.
+
+We can start with the most simple example, a *Caesar* cipher which is a one
+letter shift.
+
+For example, the sentence `Hello World!`, shifted by the letter `K` ("a" is 0
+and "k" is 10), will become :
+
+    | H | E | L | L | O |  | W | O | R | L | D |  plain text
+    | K | K | K | K | K |  | K | K | K | K | K |   key
+    | R | O | V | V | Y |  | G | Y | B | V | N |  ciphered text
+
+This kind of cipher is very susceptible to be cracked because the letters are
+all shifted by the same key (a unique letter). Since that's the case, one can
+try to count the frequencies of each letter, plug back in the usual letter
+frequencies for each letter and it's done.
+
+A Vigenère cipher is more elaborate, the key is a word or a sentence and not
+one letter. Because of this, the same letters can be shifted by a different
+amount and the resulting ciphered text is not susceptible to the deciphering
+explained above.
+
+For example, The sentence `Hello World!`, encrypted with the word `key` (with
+letters indexed from 0 to 25), becomes:
+
+    | H | E | L | L | O |  | W | O | R | L | D |  plain text
+    | K | E | Y | K | E |  | Y | K | E | Y | K |   key
+    | R | I | J | V | S |  | U | Y | V | J | N |  ciphered text
+
+You'll find that where the key from this cipher matches the key from the
+previous one, the ciphered text matches! This is one of the basic building
+blocks used to attack this ciphering scheme, it's a bit more elaborate but you
+can find the references and examples in the documentation of the code.
