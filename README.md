@@ -113,3 +113,7 @@ You'll find that where the key from this cipher matches the key from the
 previous one, the ciphered text matches! This is one of the basic building
 blocks used to attack this ciphering scheme, it's a bit more elaborate but you
 can find the references and examples in the documentation of the code.
+
+# Credits
+
+Project devised and created during my studies at the École Supérieure d'Informatique (ESI), Brussels.
